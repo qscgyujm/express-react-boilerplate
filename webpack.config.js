@@ -8,6 +8,7 @@ const htmlPlugin = new HtmlWebPackPlugin({
 
 module.exports = {
   entry: './src/index.js', // 進入點
+  // entry: ['@babel/polyfill', './src/index.js'],
   output: { // 輸出位置
     path: path.join(__dirname, 'dist'),
     filename: 'main.js',

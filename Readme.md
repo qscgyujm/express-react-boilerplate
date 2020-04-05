@@ -1,5 +1,5 @@
 express * react * boilerplate
 
-react * webpack
-express * babel
-eslint
+- react * webpack
+- express * babel
+- eslint
