@@ -1,6 +1,12 @@
 /* eslint no-shadow: "off" */
-import { takeLatest, put, all } from 'redux-saga/effects';
+import {
+  takeLatest,
+  put,
+  all,
+  call,
+} from 'redux-saga/effects';
 import { combineReducers } from 'redux';
+import axios from 'axios';
 
 // State
 const initialState = {
@@ -26,9 +32,12 @@ function* fetchSaga() {
   try {
     console.log('FETCH_REQUEST');
 
-    yield put(action.fetchProductSuccess());
+    const res = yield call(axios.get('http://localhost:3000/api'));
+    console.log(res);
+
+    yield put(action.fetchSuccess());
   } catch (error) {
-    yield put(action.fetchProductSuccess());
+    yield put(action.fetchFailure());
   }
 }
 
