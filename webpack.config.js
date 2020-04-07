@@ -8,9 +8,9 @@ const htmlPlugin = new HtmlWebPackPlugin({
 
 module.exports = {
   entry: './src/index.js', // 進入點
-  // entry: ['@babel/polyfill', './src/index.js'],
   output: { // 輸出位置
     path: path.join(__dirname, 'dist'),
+    // publicPath: '/dist/',
     filename: 'main.js',
   },
   module: {
@@ -38,5 +38,15 @@ module.exports = {
     host: '0.0.0.0', // 預設是 localhost，設定則可讓外網存取
     open: true, // 打開瀏覽器
     inline: true,
+    // useLocalIp: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      },
+    },
+    // proxy: {
+    //   'http://localhost:1337': 'http://localhost:3000',
+    // },
   },
 };

@@ -5,11 +5,12 @@
   "license": "MIT",
   "scripts": {
     "start": "node server/index.js",
-    "dev": "webpack-dev-server",
     "devs": "nodemon server/index.js --watch server/",
-    "devs2": "nodemon --exec babel-node ./server/index2.js",
-    "sbuild": "rm -rf ./build && babel ./server -d ./build",
-    "build": "webpack --mode production",
+    "dev:r": "webpack-dev-server",
+    "dev:s": "nodemon --exec babel-node ./server/index2.js",
+    "build:dev": "webpack --mode development",
+    "build:server": "rm -rf ./build && babel ./server -d ./build",
+    "build:react": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

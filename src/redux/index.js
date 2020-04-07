@@ -6,7 +6,9 @@ import {
   call,
 } from 'redux-saga/effects';
 import { combineReducers } from 'redux';
-import axios from 'axios';
+// import axios from 'axios';
+
+import * as API from '../api/index';
 
 // State
 const initialState = {
@@ -32,11 +34,12 @@ function* fetchSaga() {
   try {
     console.log('FETCH_REQUEST');
 
-    const res = yield call(axios.get('http://localhost:3000/api'));
-    console.log(res);
+    const res = yield call(API.getTestApi);
+    console.log('res', res);
 
     yield put(action.fetchSuccess());
   } catch (error) {
+    console.log(error);
     yield put(action.fetchFailure());
   }
 }
@@ -63,7 +66,6 @@ export const reducer = (state = initialState, action) => {
     case ActionType.FETCH_SUCCESS:
       return {
         ...state,
-        productList: action.payload,
         isFetching: false,
       };
     default:

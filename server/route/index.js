@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 
+import testRouter from './test';
+
 const router = express.Router();
 
 const corsOptions = {
@@ -9,9 +11,13 @@ const corsOptions = {
   exposedHeaders: ['Content-Type', 'Authorization', 'token'],
 };
 
+router.use(cors(corsOptions));
+
 /* GET home page. */
-router.get('/', cors(corsOptions), (req, res) => {
+router.get('/', (req, res) => {
   res.send('POS API');
 });
+
+router.use('/test', testRouter);
 
 export default router;
